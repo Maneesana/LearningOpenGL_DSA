@@ -12,7 +12,7 @@ if [ -d "$BUILD_DIR" ]; then
 	rm -rf "$BUILD_DIR"
 fi
 
-if [ -d "vcpkg_installed"]; then
+if [ -d "vcpkg_installed" ]; then
 	rm -rf vcpkg_installed
 fi
 
@@ -39,8 +39,8 @@ cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/
 
 # Step 4: build with make
 echo "🔨 Building project..."
-make -j$(nproc 2>/dev/null || sysctl -n hw.ncpu)
-# cmake --build .
+#make -j$(nproc 2>/dev/null || sysctl -n hw.ncpu)
+ cmake --build .
 
 # Step 5: run the executable
 echo "🚀 Running $PROJECT_NAME..."
